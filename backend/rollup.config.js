@@ -1,9 +1,9 @@
 export default [
   {
-    input: 'backend/index.js',
+    input: "src/index.js",
     output: {
-      file: 'dist/backend/index.js',
-      format: 'cjs',
+      file: "dist/index.js",
+      format: "cjs",
     },
   },
 ];

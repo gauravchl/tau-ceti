@@ -1,0 +1,21 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn",
+    "no-undef": "error"
+  },
+  "extends": ["plugin:prettier/recommended"],
+  "env": {
+    "jest": true,
+    "browser": true,
+    "node": true
+  }
+}

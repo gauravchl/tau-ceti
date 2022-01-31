@@ -3,5 +3,25 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Gaurav Chikhale",
-  "license": "MIT"
+  "license": "MIT",
+   "scripts": {
+    "start": "concurrently \"rollup -w -c\" \"nodemon dist/index.js\" "
+  },
+   "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "express-validator": "^6.14.0",
+    "http-errors": "^2.0.0",
+    "pg": "^8.7.1",
+    "sequelize": "^7.0.0-alpha.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "rollup": "^2.63.0"
+  }
 }

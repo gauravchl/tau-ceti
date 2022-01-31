@@ -3,6 +3,7 @@ import http from "http";
 import { config } from "dotenv";
 import createError from "http-errors";
 import bodyParser from "body-parser";
+import cors from "cors";
 import routes from "./routes";
 
 config();
@@ -13,6 +14,7 @@ const httpServer = http.createServer(app);
 async function startServer() {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
+  app.use(cors());
   app.use("/", routes);
   app.use((req, res, next) => next(createError(404)));
 

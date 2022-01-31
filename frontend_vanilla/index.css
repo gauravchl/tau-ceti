@@ -13,6 +13,24 @@ body {
   font-family: Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji";
   margin: 0;
+  background: #fafafa;
+}
+button {
+  cursor: pointer;
+  background: #fff;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  padding: 8px 22px;
+  color: #797874;
+}
+
+button:hover {
+  color: #000;
+  border: solid 1px #000;
+}
+
+.text-light {
+  color: #757575;
 }
 
 .rating-form {
@@ -26,17 +44,23 @@ body {
 .star {
   background-image: url("/assets/star_gray.svg");
   background-repeat: no-repeat;
-  width: 30px;
-  height: 30px;
+  background-size: 22px;
+  width: 22px;
+  height: 22px;
   float: left;
   cursor: pointer;
+  margin-right: 4px;
 }
 
 .stars-container {
   clear: both;
 }
 
-.stars-container:hover .star {
+.stars-container.readonly .star {
+  cursor: default;
+}
+
+.stars-container:not(.readonly):hover .star {
   background-image: url("/assets/star_yellow.svg");
 }
 
@@ -56,6 +80,52 @@ body {
   background-image: url("/assets/star_yellow.svg");
 }
 
-.star:hover ~ .star {
+.stars-container:not(.readonly) .star:hover ~ .star {
   background-image: url("/assets/star_gray.svg") !important;
+}
+
+#products-container {
+  width: 100%;
+  margin: 32px auto 0px;
+  max-width: 608px;
+}
+
+.product {
+  background: #fff;
+  padding: 22px;
+  border-radius: 8px;
+  margin-bottom: 22px;
+}
+
+.avg-rating-container {
+  display: flex;
+}
+
+.avg-rating-container span {
+  font-size: 22px;
+  margin-right: 22px;
+}
+
+.avg-rating-container button {
+  margin-left: auto;
+}
+
+.reviews-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.reviews-container .stars-container {
+  margin-right: 18px;
+  flex-shrink: 0;
+}
+
+.reviews-container span {
+  color: #757575;
+  margin-left: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

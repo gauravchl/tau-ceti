@@ -3,6 +3,7 @@ import http from "http";
 import { config } from "dotenv";
 import createError from "http-errors";
 import bodyParser from "body-parser";
+import routes from "./routes";
 
 config();
 
@@ -12,7 +13,7 @@ const httpServer = http.createServer(app);
 async function startServer() {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
-  app.use("/", (req, res) => res.send("HELLO WORLD"));
+  app.use("/", routes);
   app.use((req, res, next) => next(createError(404)));
 
   // Error Handler

@@ -1,10 +1,10 @@
-import Reviews from "../models/reviews";
+import Products from "../models/products";
 
-export const addReview = async (req, res) => {
+export const addProduct = async (req, res) => {
   try {
     if (!req.body) throw new Error("Invalid request");
-    const { rating, review, productId } = req.body;
-    const item = await Reviews.create({ rating, review, productId });
+    const { title, author } = req.body;
+    const item = await Products.create({ title, author });
     res.send({ data: item.toJSON(), success: true });
   } catch (err) {
     res.status(500).json({
@@ -14,10 +14,10 @@ export const addReview = async (req, res) => {
   }
 };
 
-export const getReviews = async (req, res) => {
+export const getProducts = async (req, res) => {
   try {
-    const reviews = await Reviews.findAll();
-    res.send({ data: reviews });
+    const products = await Products.findAll();
+    res.send({ data: products });
   } catch (err) {
     res.status(500).json({
       code: 500,

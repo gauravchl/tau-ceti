@@ -45,16 +45,19 @@ const renderProducts = async () => {
     .map((product) => {
       const productReviews = reviews.filter((r) => r.productId === product.id);
       const reviewsHtml = getReviews(productReviews);
-      const avgRating =
+      let avgRating =
         productReviews.reduce((a, c) => c.rating + a, 0) /
         productReviews.length;
+      avgRating = Number(avgRating).toFixed(1);
 
       return `
         <div class='product'>
         <h2>${product.title}</h2>
         <div class='avg-rating-container'>
             <span>${avgRating || 0}</span> ${getStars(avgRating)} 
-            <button>Add review</button>
+            <button class='show-form-btn' data-productId='${
+              product.id
+            }'>Add review</button>
         </div>
         <hr />
         <div>
@@ -67,6 +70,72 @@ const renderProducts = async () => {
     .join("");
 
   document.getElementById("products-container").innerHTML = productsHtml;
+
+  // Attach event handlers
+  const addReviewBtns = document.querySelectorAll(".show-form-btn");
+  addReviewBtns.forEach((ele) =>
+    ele.addEventListener("click", handleAddReviewClick)
+  );
 };
 
-window.addEventListener("load", renderProducts);
+const showForm = () => {
+  document.getElementById("rating-form").style.display = "block";
+};
+const hideForm = () => {
+  document.getElementById("rating-form").style.display = "none";
+};
+
+const resetForm = () => {
+  const input = document.querySelectorAll("#rating-form input[type='text']")[0];
+  const stars = document.querySelectorAll("#rating-form .stars-container")[0];
+  input.value = "";
+  stars.dataset.rating = 1;
+};
+
+const handleAddReviewClick = (e) => {
+  const productId = e.target.dataset.productid;
+  const form = document.querySelectorAll("#rating-form form")[0];
+  form.dataset.productId = productId;
+  showForm();
+};
+
+const handleRatingClick = (e) => {
+  const stars = document.querySelectorAll("#rating-form .stars-container")[0];
+  stars.dataset.rating = e.target.dataset.value;
+};
+
+const handleFormSubmit = async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const review = formData.get("review");
+  const ratingEle = e.target.querySelectorAll(".stars-container")[0];
+  const rating = ratingEle.dataset.rating;
+  const productId = e.target.dataset.productId;
+
+  // Submit data to backend
+  const url = `${BACKEND_URL}/review`;
+  const option = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ review, rating, productId }),
+  };
+
+  try {
+    await fetch(url, option);
+    hideForm();
+    renderProducts();
+    resetForm();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+window.addEventListener("load", () => {
+  renderProducts(); // Render products on page load event
+
+  // Add event listners to form
+  const form = document.querySelectorAll("#rating-form form")[0];
+  const stars = document.querySelectorAll("#rating-form .star");
+  form.addEventListener("submit", handleFormSubmit);
+  stars.forEach((star) => star.addEventListener("click", handleRatingClick));
+});

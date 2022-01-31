@@ -3,18 +3,18 @@
 ::after {
   box-sizing: border-box;
 }
-
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
-
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji";
   margin: 0;
   background: #fafafa;
 }
+
+input[type="submit"],
 button {
   cursor: pointer;
   background: #fff;
@@ -23,22 +23,38 @@ button {
   padding: 8px 22px;
   color: #797874;
 }
-
+input[type="submit"]:hover,
 button:hover {
   color: #000;
   border: solid 1px #000;
 }
-
+input {
+  outline: none;
+}
 .text-light {
   color: #757575;
 }
 
-.rating-form {
-  background: #f5f5f5;
-  padding: 18px 32px 32px;
-  border-radius: 12px;
-  width: 500px;
-  margin: 0 auto;
+#rating-form {
+  position: fixed;
+  left: 0;
+  top: 22vh;
+  right: 0;
+  margin: auto;
+  width: 452px;
+  padding: 12px 32px 32px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 1px 1px 0px 2000px rgb(0 0 0 / 42%);
+}
+
+#rating-form input[type="text"] {
+  display: block;
+  padding: 8px 0;
+  border: none;
+  font-size: 16px;
+  margin: 14px 0;
+  width: 100%;
 }
 
 .star {
@@ -54,6 +70,7 @@ button:hover {
 
 .stars-container {
   clear: both;
+  overflow: hidden;
 }
 
 .stars-container.readonly .star {

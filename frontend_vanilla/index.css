@@ -41,7 +41,8 @@ input {
   top: 22vh;
   right: 0;
   margin: auto;
-  width: 452px;
+  width: 100%;
+  max-width: 452px;
   padding: 12px 32px 32px;
   border-radius: 8px;
   background: #fff;

@@ -34,6 +34,9 @@ input {
 .text-light {
   color: #757575;
 }
+.text-center {
+  text-align: center;
+}
 
 #rating-form {
   position: fixed;
@@ -157,4 +160,10 @@ input {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.hire-me {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
 }

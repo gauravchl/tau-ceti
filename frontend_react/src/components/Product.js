@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Stars from './Stars';
 import Review from './Review';
+import ReviewForm from './ReviewForm';
 
 const Product = ({ product, reviews }) => {
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const hideReviewForm = () => setShowReviewForm(false);
+  const displayReviewForm = () => setShowReviewForm(true);
+
   let avgRating = reviews.reduce((a, c) => c.rating + a, 0) / reviews.length;
   avgRating = Number(avgRating).toFixed(1);
 
@@ -13,7 +18,10 @@ const Product = ({ product, reviews }) => {
         <span className="text-xl mr-4">{avgRating}</span>
         <Stars rating={avgRating} size={20} />
 
-        <button className="ml-auto border rounded px-6 py-1 text-slate-500 hover:border-slate-500 hover:text-slate-600">
+        <button
+          onClick={displayReviewForm}
+          className="ml-auto border rounded px-6 py-1 text-slate-500 hover:border-slate-500 hover:text-slate-600"
+        >
           Add review
         </button>
       </div>
@@ -24,6 +32,7 @@ const Product = ({ product, reviews }) => {
           <Review key={idx} review={review} />
         ))}
       </div>
+      <ReviewForm product={product} show={showReviewForm} onClose={hideReviewForm} />
     </div>
   );
 };

@@ -136,6 +136,8 @@ window.addEventListener("load", () => {
   // Add event listners to form
   const form = document.querySelectorAll("#rating-form form")[0];
   const stars = document.querySelectorAll("#rating-form .star");
+  const closeBtn = document.querySelectorAll("#rating-form .close-btn")[0];
   form.addEventListener("submit", handleFormSubmit);
+  closeBtn.addEventListener("click", hideForm);
   stars.forEach((star) => star.addEventListener("click", handleRatingClick));
 });

@@ -93,6 +93,7 @@ const resetForm = () => {
 };
 
 const handleAddReviewClick = (e) => {
+  e.stopPropagation();
   const productId = e.target.dataset.productid;
   const form = document.querySelectorAll("#rating-form form")[0];
   form.dataset.productId = productId;
@@ -130,6 +131,13 @@ const handleFormSubmit = async (e) => {
   }
 };
 
+const hideFormIfClickOutside = (e) => {
+  const form = document.getElementById("rating-form");
+  if (!form.contains(e.target) && form.style.display == "block") {
+    hideForm();
+  }
+};
+
 window.addEventListener("load", () => {
   renderProducts(); // Render products on page load event
 
@@ -140,4 +148,5 @@ window.addEventListener("load", () => {
   form.addEventListener("submit", handleFormSubmit);
   closeBtn.addEventListener("click", hideForm);
   stars.forEach((star) => star.addEventListener("click", handleRatingClick));
+  document.addEventListener("click", hideFormIfClickOutside);
 });

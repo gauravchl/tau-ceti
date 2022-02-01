@@ -2,4 +2,4 @@
 
 # todo
 
-- Hide form when click outside
+- Test on diffferent web browsers

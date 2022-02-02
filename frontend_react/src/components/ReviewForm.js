@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useMutation } from '@apollo/client';
+import { GrClose } from 'react-icons/gr';
 import RatingInput from './RatingInput';
 import { SUBMIT_REVIEW } from '../graphql/queries';
 
@@ -52,6 +53,9 @@ const ReviewForm = ({ product, show, onClose }) => {
         >
           <form onSubmit={handleSubmit}>
             <div className="inline-block w-full max-w-md p-6  overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-md mt-24">
+              <button className="absolute right-0 top-0 mr-6 mt-6" onClick={onClose}>
+                <GrClose />
+              </button>
               <h1 className="text-2xl mb-4">What's your rating?</h1>
               <p>Rating</p>
               <RatingInput defaultRating={rating} onChange={handleRatingChange} />

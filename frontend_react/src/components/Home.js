@@ -14,6 +14,15 @@ const Home = (props) => {
         const productReviews = reviews.filter((r) => r.productId === product.id);
         return <Product key={idx} product={product} reviews={productReviews} />;
       })}
+
+      <a
+        className="fixed right-0 bottom-0 mr-8 mb-8 underline"
+        target="_blank"
+        rel="noreferrer"
+        href="https://gauravchl.com"
+      >
+        Hire me
+      </a>
     </div>
   );
 };

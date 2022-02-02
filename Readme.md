@@ -1,4 +1,4 @@
-# Tau Ceti ![example workflow](https://github.com/gauravchl/tau-ceti/actions/workflows/main.yml/badge.svg)
+# Tau Ceti [![Tests](https://github.com/gauravchl/tau-ceti/actions/workflows/main.yml/badge.svg)](https://github.com/gauravchl/tau-ceti/actions)
 
 ### Project structure
 
@@ -46,7 +46,8 @@
 - V2 Frontend is built using React(Create React App).
 - It uses GraphQL(Apollo lib) to connect to backend.
 - It uses GraphQL's Subscription over websocket to display reviews in real-time.
-- It is also deployed on Netlify.
+- Most of the styling is done using tailwind css.
+- It is also deployed on Netlify and tests are running on GitHub actions.
 
   ```bash
   # Quickstart

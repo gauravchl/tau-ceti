@@ -2,7 +2,7 @@ import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
   type Review {
-    rating: Int
+    rating: Float
     review: String
     id: Int
     productId: Int
@@ -24,7 +24,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addReview(rating: Int!, review: String!, productId: Int!): Review
+    addReview(rating: Float!, review: String!, productId: Int!): Review
   }
 
   type Subscription {

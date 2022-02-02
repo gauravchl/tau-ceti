@@ -5,7 +5,7 @@ import Products from "./products";
 class Reviews extends Model {}
 
 const columns = {
-  rating: DataTypes.INTEGER,
+  rating: DataTypes.FLOAT,
   review: DataTypes.STRING,
   productId: {
     type: DataTypes.INTEGER,

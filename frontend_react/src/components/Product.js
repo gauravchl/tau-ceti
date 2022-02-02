@@ -9,7 +9,7 @@ const Product = ({ product, reviews }) => {
   const displayReviewForm = () => setShowReviewForm(true);
 
   let avgRating = reviews.reduce((a, c) => c.rating + a, 0) / reviews.length;
-  avgRating = Number(avgRating).toFixed(1);
+  avgRating = Number(avgRating || 0).toFixed(1);
 
   return (
     <div className="bg-white rounded p-8 max-w-screen-sm w-full mx-auto mb-12">

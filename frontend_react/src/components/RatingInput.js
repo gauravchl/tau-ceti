@@ -11,6 +11,7 @@ const RatingInput = ({ onChange, defaultRating, maxRating = 5, size = 24 }) => {
     const side = e.target.getAttribute('data-side');
     const newRating = side === 'left' ? idx + 0.5 : idx + 1;
     setHoverRating(null);
+    onChange(newRating);
     return setRating(newRating);
   };
 

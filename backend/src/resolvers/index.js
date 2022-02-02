@@ -21,8 +21,8 @@ const resolvers = {
   },
   Mutation: {
     addReview: async (parent, args) => {
-      const { review, rating } = args;
-      const item = await Reviews.create({ rating, review });
+      const { review, rating, productId } = args;
+      const item = await Reviews.create({ rating, review, productId });
       const newReview = item.toJSON();
       pubsub.publish("REVIEW_ADDED", { reviewAdded: newReview });
       return newReview;

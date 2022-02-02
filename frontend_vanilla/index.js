@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://159.223.139.179";
+const BACKEND_URL = "https://backend.gauravchl.com";
 
 const fetchData = async () => {
   const res1 = await fetch(`${BACKEND_URL}/products`);

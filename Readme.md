@@ -1,4 +1,4 @@
-# Tau Ceti
+# Tau Ceti ![example workflow](https://github.com/gauravchl/tau-ceti/actions/workflows/main.yml/badge.svg)
 
 ### Project structure
 

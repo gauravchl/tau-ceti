@@ -4,7 +4,10 @@ import { config } from "dotenv";
 import createError from "http-errors";
 import bodyParser from "body-parser";
 import cors from "cors";
-import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
+import {
+  ApolloServerPluginDrainHttpServer,
+  ApolloServerPluginLandingPageGraphQLPlayground,
+} from "apollo-server-core";
 import { ApolloServer } from "apollo-server-express";
 import { SubscriptionServer } from "subscriptions-transport-ws";
 import { makeExecutableSchema } from "@graphql-tools/schema";
@@ -32,6 +35,7 @@ async function startApolloServer() {
 
     plugins: [
       ApolloServerPluginDrainHttpServer({ httpServer }),
+      ApolloServerPluginLandingPageGraphQLPlayground(),
       {
         async serverWillStart() {
           return {

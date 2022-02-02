@@ -5,7 +5,8 @@
   "author": "Gaurav Chikhale",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"rollup -w -c\" \"nodemon dist/index.js\" "
+    "start": "concurrently \"rollup -w -c\" \"nodemon dist/index.js\" ",
+    "build": "rollup -c"
   },
   "dependencies": {
     "@graphql-tools/schema": "^8.3.1",

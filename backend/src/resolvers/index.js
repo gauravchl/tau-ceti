@@ -31,3 +31,4 @@ const resolvers = {
 };
 
 export default resolvers;
+export { pubsub };

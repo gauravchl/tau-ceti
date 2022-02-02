@@ -22,3 +22,14 @@ export const SUBMIT_REVIEW = gql`
     }
   }
 `;
+
+export const REVIEWS_SUBSCRIPTION = gql`
+  subscription OnReviewAdded {
+    reviewAdded {
+      id
+      review
+      rating
+      productId
+    }
+  }
+`;
